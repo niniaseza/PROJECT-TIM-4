@@ -1,0 +1,108 @@
+# Sistem Pengelolaan Data Mahasiswa - Universitas Syiah Kuala
+
+data_mahasiswa = []
+
+def tampilkan_menu():
+    print("\n=== Sistem Pengelolaan Data Mahasiswa USK ===")
+    print("1. Tambah Data Mahasiswa")
+    print("2. Lihat Semua Data Mahasiswa")
+    print("3. Cari Data Mahasiswa")
+    print("4. Perbarui Data Mahasiswa")
+    print("5. Hapus Data Mahasiswa")
+    print("6. Statistik Data Mahasiswa")
+    print("7. Keluar")
+
+def tambah_data():
+    nama = input("Masukkan nama: ").strip()
+    nim = input("Masukkan NIM: ").strip()
+    jurusan = input("Masukkan jurusan: ").strip()
+    fakultas = input("Masukkan fakultas: ").strip()
+    angkatan = input("Masukkan tahun angkatan: ").strip()
+    asal = input("Masukkan asal daerah: ").strip()
+    data_mahasiswa.append({
+        "Nama": nama, "NIM": nim, "Jurusan": jurusan,
+        "Fakultas": fakultas, "Angkatan": angkatan, "Asal": asal
+    })
+    print("Data berhasil ditambahkan!")
+
+def lihat_data():
+    if not data_mahasiswa:
+        print("Belum ada data mahasiswa.")
+    else:
+        for i, mhs in enumerate(data_mahasiswa, start=1):
+            print(f"{i}. Nama: {mhs['Nama']}, NIM: {mhs['NIM']}, "
+                  f"Jurusan: {mhs['Jurusan']}, Fakultas: {mhs['Fakultas']}, "
+                  f"Angkatan: {mhs['Angkatan']}, Asal: {mhs['Asal']}")
+
+def cari_data():
+    nim = input("Masukkan NIM: ").strip()
+    for mhs in data_mahasiswa:
+        if mhs["NIM"] == nim:
+            print(f"Data ditemukan: Nama: {mhs['Nama']}, Jurusan: {mhs['Jurusan']}, "
+                  f"Fakultas: {mhs['Fakultas']}, Angkatan: {mhs['Angkatan']}, Asal: {mhs['Asal']}")
+            return
+print("Data tidak ditemukan.")
+
+def perbarui_data():
+    nim = input("Masukkan NIM: ").strip()
+    for mhs in data_mahasiswa:
+        if mhs["NIM"] == nim:
+            mhs["Nama"] = input("Nama baru: ").strip()
+            mhs["Jurusan"] = input("Jurusan baru: ").strip()
+            mhs["Fakultas"] = input("Fakultas baru: ").strip()
+            mhs["Angkatan"] = input("Tahun angkatan baru: ").strip()
+            mhs["Asal"] = input("Asal daerah baru: ").strip()
+            print("Data berhasil diperbarui!")
+            return
+    print("Data tidak ditemukan.")
+
+def hapus_data():
+    nim = input("Masukkan NIM: ").strip()
+    for i, mhs in enumerate(data_mahasiswa):
+        if mhs["NIM"] == nim:
+            del data_mahasiswa[i]
+            print("Data berhasil dihapus!")
+            return
+    print("Data tidak ditemukan.")
+
+def statistik_data():
+    if not data_mahasiswa:
+        print("Belum ada data mahasiswa.")
+        return
+    fakultas_count = {}
+    asal_count = {}
+    for mhs in data_mahasiswa:
+        fakultas_count[mhs["Fakultas"]] = fakultas_count.get(mhs["Fakultas"], 0) + 1
+        asal_count[mhs["Asal"]] = asal_count.get(mhs["Asal"], 0) + 1
+    print(f"Total Mahasiswa: {len(data_mahasiswa)}")
+    print("Mahasiswa per Fakultas:")
+    for fakultas, jumlah in fakultas_count.items():
+        print(f"- {fakultas}: {jumlah}")
+    print("Mahasiswa per Asal Daerah:")
+    for asal, jumlah in asal_count.items():
+        print(f"- {asal}: {jumlah}")
+
+def main():
+    while True:
+        tampilkan_menu()
+        pilihan = input("Pilih menu (1-7): ").strip()
+        if pilihan == "1":
+            tambah_data()
+        elif pilihan == "2":
+            lihat_data()
+        elif pilihan == "3":
+            cari_data()
+        elif pilihan == "4":
+            perbarui_data()
+        elif pilihan == "5":
+            hapus_data()
+        elif pilihan == "6":
+            statistik_data()
+        elif pilihan == "7":
+            print("Program selesai. Sampai jumpa!")
+            break
+        else:
+            print("Pilihan tidak valid.")
+
+if __name__ == "__main__":
+    main()
