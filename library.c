@@ -301,3 +301,49 @@ void menuUser(const char *alatLabFile, const char *riwayatFile, struct User *use
         printf("5. Keluar\n");
         printf("Pilihan: ");
         scanf("%d", &pilihan);
+
+       switch (pilihan) {
+            case 1:
+                bacaDataAlatLab(alatLabFile);
+                break;
+            case 2:
+                pinjamAlat(alatLabFile, riwayatFile, user);
+                break;
+            case 3:
+                lihatRiwayatPeminjaman(riwayatFile, user);
+                break;
+            case 4:
+                kembalikanAlat(alatLabFile, riwayatFile, user);
+                break;
+            case 5:
+                printf("Terima kasih telah menggunakan program ini. Keluar dari menu User...\n");
+                break;
+            default:
+                printf("Pilihan tidak valid. Silakan coba lagi.\n");
+        }
+    } while (pilihan != 5);
+}
+
+//Fungsi untuk menambah alat baru
+void tambah_alat() {
+    FILE *file = fopen("alat_lab.txt", "a");
+    if (!file) {
+        printf("Gagal membuka file alat_lab.txt\n");
+        return;
+    }
+
+    unsigned int id, tahun, jumlah;
+    char nama[50], merek[50], model[50];
+
+    printf("Masukkan ID alat: ");
+    scanf("%u", &id);
+    printf("Masukkan nama alat: ");
+    scanf(" %[^\n]s", nama);
+    printf("Masukkan merek alat: ");
+    scanf(" %[^\n]s", merek);
+    printf("Masukkan model alat: ");
+    scanf(" %[^\n]s", model);
+    printf("Masukkan tahun produksi alat: ");
+    scanf("%u", &tahun);
+    printf("Masukkan jumlah unit alat: ");
+    scanf("%u", &jumlah);
