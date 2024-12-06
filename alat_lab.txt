@@ -1,0 +1,11 @@
+ID,Nama,Merek,Model,Tahun,Jumlah
+1, Mikroskop, Olympus, CX23, 2019, 5
+2, Tabung Reaksi, Pyrex, 16x150 mm, 2021, 18
+3, Gelas Ukur, Duran, 100 ml, 2020, 20
+4, Pipet Tetes, Kartell, Plastik, 2022, 30
+5, Termometer, LabQuest, Digital, 2021, 15
+6, Kaca Pembesar, Bel-Art, 5x, 2020, 10
+7, Erlenmeyer, Kimax, 250 ml, 2021, 15
+8, Stopwatch, Casio, HS-70W, 2022, 10
+9, Timbangan Digital, AND, FX-300i, 2021, 5
+10, Neraca, Ohaus, Triple Beam, 2020, 5
