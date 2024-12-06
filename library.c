@@ -123,3 +123,25 @@ void pinjamAlat(const char *alatLabFile, const char *riwayatFile, struct User *u
                &alat.idAlat, alat.namaAlat, alat.merek, alat.model, &alat.tahunProduksi, &alat.jumlahUnit);
 
         //data peminjaman
+    if (alat.idAlat == idAlat) {
+            if (alat.jumlahUnit >= jumlahPinjam) {
+                alat.jumlahUnit -= jumlahPinjam;
+                strcpy(riwayat.Nama, user->Nama);
+                riwayat.idAlat = alat.idAlat;
+                strcpy(riwayat.namaAlat, alat.namaAlat);
+                riwayat.jumlah = jumlahPinjam;
+                strcpy(riwayat.tanggal, tanggal);
+                saveRiwayatPeminjaman(riwayatFile, &riwayat);
+                printf("Peminjaman berhasil!\n");
+            } else {
+                printf("Stok alat tidak mencukupi!\n");
+            }
+        }
+        fprintf(tempFile, "%u, %s, %s, %s, %u, %u\n", alat.idAlat, alat.namaAlat, alat.merek, alat.model, alat.tahunProduksi, alat.jumlahUnit);
+    }
+
+    fclose(file);
+    fclose(tempFile);
+    remove(alatLabFile); //menghapus unit yang dipinjam
+    rename("temp.txt", alatLabFile);// write data unit baru
+}
