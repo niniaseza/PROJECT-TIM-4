@@ -7,8 +7,7 @@
 #include <time.h>
 
 //Struktur data untuk name
-struct User
-{
+struct User {
     char Nama[50];
     char password[50];
 };
@@ -17,4 +16,3 @@ struct User
 struct AlatLab {
     unsigned int idAlat;
     char namaAlat[50];
-    char merek[50];
