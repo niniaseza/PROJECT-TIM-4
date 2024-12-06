@@ -27,4 +27,4 @@ Program ini memiliki dua fungsi tambahan yang membantu sebelum fungsi utama. Fun
 
 Di fungsi utama proses_lirik, program membuka file lirik.txt yang berisi lirik lagu dan file output kosa-kata.word untuk menulis daftar kata unik. Jika ada masalah saat membuka file, program akan menampilkan pesan error. Program membaca judul lagu dari baris pertama dan menuliskannya ke file output. Kemudian, setiap baris lirik dibaca dan dipisahkan menjadi kata-kata.
 
-Setiap kata dibersihkan dan dicek apakah sudah ada di daftar. Jika belum, kata tersebut ditambahkan. Setelah semua lirik diproses, program menulis kata-kata unik ke file output dengan format kata=. Terakhir, file ditutup, dan fungsi main hanya memanggil fungsi proses_lirik untuk menjalankan semua proses.
+Setiap kata dibersihkan dan dicek apakah sudah ada di daftar, Jika belum, kata tersebut ditambahkan. Setelah semua lirik diproses, program menulis kata-kata unik ke file output dengan format kata=. Terakhir, file ditutup, dan fungsi main hanya memanggil fungsi proses_lirik untuk menjalankan semua proses.
