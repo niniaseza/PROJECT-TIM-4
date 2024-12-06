@@ -42,3 +42,47 @@ int main(int argc, char *argv[]) {
             dataUserKeFile(userFile, &newUser);
             printf("User '%s' berhasil didaftarkan.\n", Nama);
         } else {
+            printf("Role tidak valid. Gunakan 'admin' atau 'user'.\n");
+        }
+
+    // Handle login
+    } else if (strcmp(action, "login") == 0) {
+        if (argc != 5) {
+            printf("Cara Penggunaan: %s login <role> <Nama> <password>\n", argv[0]);
+            return 1;
+        }
+
+        const char *role = argv[2];
+        const char *Nama = argv[3];
+        const char *password = argv[4];
+        int loginSuccess;
+
+        strcpy(currentUser.Nama, Nama);
+        strcpy(currentUser.password, password);
+
+        if (strcmp(role, "admin") == 0) {
+            loginSuccess = loginUser(adminFile, &currentUser);
+            if (loginSuccess) {
+                printf("Admin '%s' berhasil masuk.\n", Nama);
+                menuAdmin(alatLabFile);
+            } else {
+                printf("Gagal masuk sebagai Admin.\n");
+            }
+        } else if (strcmp(role, "user") == 0) {
+            loginSuccess = loginUser(userFile, &currentUser);
+            if (loginSuccess) {
+                printf("User '%s' berhasil masuk.\n", Nama);
+                menuUser(alatLabFile, riwayatFile, &currentUser);
+            } else {
+                printf("Gagal masuk sebagai User.\n");
+            }
+        } else {
+            printf("Role tidak valid. Gunakan 'admin' atau 'user'.\n");
+        }
+    } else {
+        printf("Perintah tidak valid. Gunakan 'register' atau 'login'.\n");
+    }
+
+    return 0;
+}
+
