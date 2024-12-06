@@ -122,7 +122,7 @@ void pinjamAlat(const char *alatLabFile, const char *riwayatFile, struct User *u
         sscanf(buffer, "%u, %49[^,], %49[^,], %49[^,], %u, %u",
                &alat.idAlat, alat.namaAlat, alat.merek, alat.model, &alat.tahunProduksi, &alat.jumlahUnit);
 
-        //data peminjaman
+    //data peminjaman
     if (alat.idAlat == idAlat) {
             if (alat.jumlahUnit >= jumlahPinjam) {
                 alat.jumlahUnit -= jumlahPinjam;
@@ -194,5 +194,31 @@ void kembalikanAlat(const char *alatLabFile, const char *riwayatFile, struct Use
     if (!tempRiwayat) {
         printf("Gagal membuat file sementara.\n");
         fclose(fileRiwayat);
+        return;
+    }
+
+    //looping riwayat alat lab
+    int ditemukan = 0;
+    while (fgets(buffer, sizeof(buffer), fileRiwayat)) {
+        sscanf(buffer, "%49[^,],%u,%49[^,],%u,%49[^\n]",
+               riwayat.Nama, &riwayat.idAlat, riwayat.namaAlat, &riwayat.jumlah, riwayat.tanggal);
+
+        if (strcmp(riwayat.Nama, user->Nama) == 0 && riwayat.idAlat == idAlat) {
+            totalDipinjam += riwayat.jumlah;
+            ditemukan = 1;
+        }
+    }
+    fclose(fileRiwayat);
+
+    // Validasi jumlah yang dikembalikan
+    if (!ditemukan) {
+        printf("ID alat tidak ditemukan dalam riwayat peminjaman Anda.\n");
+        fclose(tempRiwayat);
+        return;
+    }
+
+    if (jumlahKembali > totalDipinjam) {
+        printf("Jumlah yang dikembalikan melebihi jumlah yang dipinjam.\n");
+        fclose(tempRiwayat);
         return;
     }
