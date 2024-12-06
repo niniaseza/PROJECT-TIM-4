@@ -21,3 +21,5 @@ File user.txt menyimpan semua informasi pengguna, sedangkan alat.txt menyimpan r
 ***PENJELASAN PROGRAM BONUS***<br>
    Program ini merupakan program yang kami susun untuk membantu Pengguna memahami kosakata per lirik pada sebuah lagu, jadi saat lirik lagu di input nantinya output akan menghasilkan kosakata yang tidak berulang dari potongan lagu yang diinput, berurut sesuai lirik lagunya, setiap kata akan menjadi huruf kecil, dan tanda baca akan dihapus kecuali tanda penghubung seperti weren't, i'm dan sejenisnya. <br>
 
+Program ini memiliki dua fungsi tambahan yang membantu sebelum fungsi utama. Fungsi *bersihkan_kata(char kata) menghapus tanda baca (kecuali apostrof) dan mengubah huruf besar menjadi huruf kecil. Fungsi *kata_unik(char kata, char daftar[][100], int jumlah) memeriksa apakah sebuah kata sudah ada dalam daftar. Jika belum, kata tersebut dianggap unik.
+
