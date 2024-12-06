@@ -23,3 +23,6 @@ File user.txt menyimpan semua informasi pengguna, sedangkan alat.txt menyimpan r
 
 Program ini memiliki dua fungsi tambahan yang membantu sebelum fungsi utama. Fungsi *bersihkan_kata(char kata) menghapus tanda baca (kecuali apostrof) dan mengubah huruf besar menjadi huruf kecil. Fungsi *kata_unik(char kata, char daftar[][100], int jumlah) memeriksa apakah sebuah kata sudah ada dalam daftar. Jika belum, kata tersebut dianggap unik.
 
+Di fungsi utama proses_lirik, program membuka file lirik.txt yang berisi lirik lagu dan file output kosa-kata.word untuk menulis daftar kata unik. Jika ada masalah saat membuka file, program akan menampilkan pesan error. Program membaca judul lagu dari baris pertama dan menuliskannya ke file output. Kemudian, setiap baris lirik dibaca dan dipisahkan menjadi kata-kata.
+
+
