@@ -145,3 +145,54 @@ void pinjamAlat(const char *alatLabFile, const char *riwayatFile, struct User *u
     remove(alatLabFile); //menghapus unit yang dipinjam
     rename("temp.txt", alatLabFile);// write data unit baru
 }
+
+//Fungsi untuk melihat riwayat peminjaman
+void lihatRiwayatPeminjaman(const char *riwayatFile, struct User *user) {
+    FILE *file = fopen(riwayatFile, "r");
+    if (!file) {
+        printf("Gagal membuka file riwayat peminjaman.\n");
+        return;
+    }
+
+    char buffer[200];
+    struct RiwayatPeminjaman riwayat;// struktur file riwayatpeminjaman
+
+    printf("\n=== Riwayat Peminjaman ===\n");//menampilkan riwayat pinjam
+    printf("%-10s %-20s %-10s %-20s\n", "ID Alat", "Nama Alat", "Jumlah", "Tanggal");
+    while (fgets(buffer, sizeof(buffer), file)) {
+        if (sscanf(buffer, "%49[^,],%u,%49[^,],%u,%49[^\n]", riwayat.Nama, &riwayat.idAlat, riwayat.namaAlat, &riwayat.jumlah, riwayat.tanggal) == 5) {
+            if (strcmp(riwayat.Nama, user->Nama) == 0) {
+                printf("%-10u %-20s %-10u %-20s\n", riwayat.idAlat, riwayat.namaAlat, riwayat.jumlah, riwayat.tanggal);
+            }
+        }
+    }
+
+    fclose(file);
+}
+
+//Fungsi untuk mengembalikan alat
+void kembalikanAlat(const char *alatLabFile, const char *riwayatFile, struct User *user) {
+    FILE *fileRiwayat = fopen(riwayatFile, "r");
+    if (!fileRiwayat) {
+        printf("Gagal membuka file riwayat peminjaman.\n");
+        return;
+    }
+
+    struct RiwayatPeminjaman riwayat;
+    struct AlatLab alat;
+    char buffer[200];
+    unsigned int idAlat, jumlahKembali, totalDipinjam = 0, jumlahDikembalikan = 0;
+    
+    //input pengembalian alat lab
+    printf("\nMasukkan ID alat yang ingin dikembalikan: ");
+    scanf("%u", &idAlat);
+    printf("Masukkan jumlah alat yang ingin dikembalikan: ");
+    scanf("%u", &jumlahKembali);
+
+    // Hitung total alat yang dipinjam
+    FILE *tempRiwayat = fopen("temp_riwayat.txt", "w");
+    if (!tempRiwayat) {
+        printf("Gagal membuat file sementara.\n");
+        fclose(fileRiwayat);
+        return;
+    }
