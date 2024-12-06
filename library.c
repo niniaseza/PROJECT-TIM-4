@@ -269,3 +269,35 @@ void kembalikanAlat(const char *alatLabFile, const char *riwayatFile, struct Use
     rewind(fileAlat);
     fgets(buffer, sizeof(buffer), fileAlat); // Skip header
     fprintf(tempAlat, "ID,Nama,Merek,Model,Tahun,Jumlah\n");
+    while (fgets(buffer, sizeof(buffer), fileAlat)) {
+        sscanf(buffer, "%u, %49[^,], %49[^,], %49[^,], %u, %u",
+               &alat.idAlat, alat.namaAlat, alat.merek, alat.model, &alat.tahunProduksi, &alat.jumlahUnit);
+
+        if (alat.idAlat == idAlat) {
+            alat.jumlahUnit += jumlahKembali;
+        }
+        fprintf(tempAlat, "%u, %s, %s, %s, %u, %u\n",
+                alat.idAlat, alat.namaAlat, alat.merek, alat.model, alat.tahunProduksi, alat.jumlahUnit);
+    }
+
+    fclose(fileAlat);
+    fclose(tempAlat);
+    remove(alatLabFile);
+    rename("temp_alat.txt", alatLabFile);
+
+    printf("Pengembalian alat berhasil.\n");
+}
+
+//Fungsi untuk menampilkan menu user
+void menuUser(const char *alatLabFile, const char *riwayatFile, struct User *user) {
+    int pilihan;
+
+    do {
+        printf("\n=== Menu User ===\n");
+        printf("1. Lihat Daftar Alat Lab\n");
+        printf("2. Pinjam Alat\n");
+        printf("3. Lihat Riwayat Peminjaman\n");
+        printf("4. Kembalikan Alat\n");
+        printf("5. Keluar\n");
+        printf("Pilihan: ");
+        scanf("%d", &pilihan);
