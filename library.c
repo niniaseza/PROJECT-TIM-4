@@ -450,3 +450,15 @@ void edit_alat() {
         }
         fprintf(temp, "%u,%s,%s,%s,%u,%u\n", alat_id, nama, merek, model, tahun, jumlah);
     }
+
+    if (found) {
+        printf("Data alat dengan ID %u berhasil di-edit.\n", id);
+    } else {
+        printf("Alat dengan ID %u tidak ditemukan.\n", id);
+    }
+
+    fclose(file);
+    fclose(temp);
+    remove("alat_lab.txt");
+    rename("temp.txt", "alat_lab.txt");
+}
