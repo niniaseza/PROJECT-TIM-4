@@ -222,3 +222,29 @@ void kembalikanAlat(const char *alatLabFile, const char *riwayatFile, struct Use
         fclose(tempRiwayat);
         return;
     }
+
+    // Buka ulang file riwayat untuk proses pengembalian
+    fileRiwayat = fopen(riwayatFile, "r");
+    while (fgets(buffer, sizeof(buffer), fileRiwayat)) {
+        sscanf(buffer, "%49[^,],%u,%49[^,],%u,%49[^\n]",
+               riwayat.Nama, &riwayat.idAlat, riwayat.namaAlat, &riwayat.jumlah, riwayat.tanggal);
+
+        if (strcmp(riwayat.Nama, user->Nama) == 0 && riwayat.idAlat == idAlat) {
+            if (jumlahDikembalikan < jumlahKembali) {
+                unsigned int sisaKembali = jumlahKembali - jumlahDikembalikan;
+                if (riwayat.jumlah <= sisaKembali) {
+                    jumlahDikembalikan += riwayat.jumlah;
+                    riwayat.jumlah = 0;
+                } else {
+                    riwayat.jumlah -= sisaKembali;
+                    jumlahDikembalikan = jumlahKembali;
+                }
+            }
+        }
+
+        if (riwayat.jumlah > 0) {
+            fprintf(tempRiwayat, "%s,%u,%s,%u,%s\n",
+                    riwayat.Nama, riwayat.idAlat, riwayat.namaAlat, riwayat.jumlah, riwayat.tanggal);
+        }
+    }
+    fclose(fileRiwayat);
