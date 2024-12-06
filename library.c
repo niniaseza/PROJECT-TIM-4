@@ -423,3 +423,30 @@ void edit_alat() {
 
     char line[200];
     int found = 0;
+
+    while (fgets(line, sizeof(line), file)) {
+        unsigned int alat_id, tahun, jumlah;
+        char nama[50], merek[50], model[50];
+        sscanf(line, "%u,%49[^,],%49[^,],%49[^,],%u,%u",
+               &alat_id, nama, merek, model, &tahun, &jumlah);
+
+        if (alat_id == id) {
+            found = 1;
+            printf("Data alat ditemukan:\n");
+            printf("Nama: %s, Merek: %s, Model: %s, Tahun: %u, Jumlah: %u\n", 
+                   nama, merek, model, tahun, jumlah);
+
+            printf("Masukkan data baru:\n");
+            printf("Nama alat: ");
+            scanf(" %[^\n]s", nama);
+            printf("Merek alat: ");
+            scanf(" %[^\n]s", merek);
+            printf("Model alat: ");
+            scanf(" %[^\n]s", model);
+            printf("Tahun produksi: ");
+            scanf("%u", &tahun);
+            printf("Jumlah unit: ");
+            scanf("%u", &jumlah);
+        }
+        fprintf(temp, "%u,%s,%s,%s,%u,%u\n", alat_id, nama, merek, model, tahun, jumlah);
+    }
