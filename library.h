@@ -60,3 +60,14 @@ void menuUser(const char *alatLabFile, const char *riwayatFile, struct User *nam
 
 //Fungsi untuk menambah alat baru
 void tambah_alat();
+
+//Fungsi untuk menghapus alat berdasarkan ID
+void hapus_alat();
+
+//Fungsi untuk mengedit alat berdasarkan ID
+void edit_alat();
+
+//Menu utama untuk Admin
+void menuAdmin(const char *alatLabFile);
+
+#endif 
