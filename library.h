@@ -43,3 +43,13 @@ void bacaDataAlatLab(const char *filename);
 // Fungsi untuk login name
 int loginUser(const char *filename, struct User *name);
 
+//Fungsi untuk menyimpan riwayat peminjaman ke dalam file
+void saveRiwayatPeminjaman(const char *filename, struct RiwayatPeminjaman *riwayat);
+
+//Fungsi untuk meminjam alat
+void pinjamAlat(const char *alatLabFile, const char *riwayatFile, struct User *name);
+
+//Fungsi untuk melihat riwayat peminjaman
+void lihatRiwayatPeminjaman(const char *riwayatFile, struct User *name);
+
+//Fungsi untuk mengembalikan alat
