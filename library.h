@@ -16,3 +16,12 @@ struct User {
 struct AlatLab {
     unsigned int idAlat;
     char namaAlat[50];
+char merek[50];
+    char model[50];
+    unsigned int tahunProduksi;
+    unsigned int jumlahUnit;
+};
+
+// struktur data untuk riwayat peminjaman
+struct RiwayatPeminjaman {
+    char Nama[50];
