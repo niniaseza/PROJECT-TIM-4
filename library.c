@@ -462,3 +462,38 @@ void edit_alat() {
     remove("alat_lab.txt");
     rename("temp.txt", "alat_lab.txt");
 }
+
+//Fungsi Menu Admin
+void menuAdmin(const char *alatLabFile) {
+    int pilihan;
+    do {
+        printf("\n=== Menu Admin ===\n");
+        printf("1. Tambah Alat\n");
+        printf("2. Hapus Alat\n");
+        printf("3. Edit Alat\n");
+        printf("4. Lihat Daftar Alat\n");
+        printf("5. Keluar\n");
+        printf("Pilihan: ");
+        scanf("%d", &pilihan);
+
+        switch (pilihan) {
+            case 1:
+                tambah_alat();
+                break;
+            case 2:
+                hapus_alat();
+                break;
+            case 3:
+                edit_alat();
+                break;
+            case 4:
+                bacaDataAlatLab(alatLabFile);
+                break;
+            case 5:
+               printf("Terima kasih telah menggunakan program ini. Keluar dari menu Admin...\n");
+                break;
+            default:
+                printf("Pilihan tidak valid. Silakan coba lagi.\n");
+        }
+    } while (pilihan != 5);
+}
