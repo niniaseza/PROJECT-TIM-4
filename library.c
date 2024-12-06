@@ -347,3 +347,29 @@ void tambah_alat() {
     scanf("%u", &tahun);
     printf("Masukkan jumlah unit alat: ");
     scanf("%u", &jumlah);
+
+    fprintf(file, "%u,%s,%s,%s,%u,%u\n", id, nama, merek, model, tahun, jumlah);
+    printf("Alat berhasil ditambahkan!\n");
+
+    fclose(file);
+}
+
+//Fungsi untuk menghapus alat berdasarkan ID
+void hapus_alat() {
+    unsigned int id;
+    printf("Masukkan ID alat yang ingin dihapus: ");
+    scanf("%u", &id);
+
+    FILE *file = fopen("alat_lab.txt", "r");
+    FILE *temp = fopen("temp.txt", "w");
+    if (!file || !temp) {
+        printf("Gagal membuka file.\n");
+        return;
+    }
+
+    char line[200];
+    int found = 0;
+
+    // Baca baris pertama (header) dan langsung salin ke file sementara
+    if (fgets(line, sizeof(line), file)) {
+        fprintf(temp, "%s", line);  // Salin header apa adanya
