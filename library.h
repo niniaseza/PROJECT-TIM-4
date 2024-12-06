@@ -33,3 +33,13 @@ unsigned int idAlat;
 
 //Fungsi untuk membersihkan layar
 void clearScreen();
+
+// Fungsi untuk menyimpan data name ke dalam file name
+void dataUserKeFile(const char *filename, struct User *name);
+
+// Fungsi untuk membaca dan menampilkan data alat lab dari file.txt
+void bacaDataAlatLab(const char *filename);
+
+// Fungsi untuk login name
+int loginUser(const char *filename, struct User *name);
+
