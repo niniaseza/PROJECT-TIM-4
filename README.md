@@ -19,6 +19,7 @@ Anggota Kelompok 4:
 
    Pengguna memiliki kemampuan untuk menambah, mengedit, atau menghapus data alat sesuai kebutuhan. Setiap transaksi peminjaman alat dicatat dalam file peminjaman.txt, memastikan semua aktivitas terkelola dengan baik. Sistem ini menjaga keamanan data dengan penggunaan password dan ID unik, sehingga hanya pengguna yang terdaftar yang dapat mengakses informasi yang relevan.
 
+
 ***PENJELASAN PROGRAM BONUS***<br>
    Program ini merupakan program yang kami susun untuk membantu Pengguna memahami kosakata per lirik pada sebuah lagu, jadi saat lirik lagu di input nantinya output akan menghasilkan kosakata yang tidak berulang dari potongan lagu yang diinput, berurut sesuai lirik lagunya, setiap kata akan menjadi huruf kecil, dan tanda baca akan dihapus kecuali tanda penghubung seperti weren't, i'm dan sejenisnya. <br>
 
