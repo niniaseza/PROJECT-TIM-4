@@ -14,7 +14,7 @@ Anggota Kelompok 4:
    Program ini merupakan program Sistem Peminjaman Alat Laboratorium, dimana dalam program ini pengguna dapat memilih untuk masuk sebagai admin atau user, 
 kemudian jika pengguna masuk sebagai admin maka pengguna dapat mengubah, menambah, menghapus, dan melihat alat lab dalam sistem, jika pengguna masuk sebagai user
 maka pengguna dapat melihat, meminjam, mengembalikan, melihat riwayat pinjam, alat lab dalam sistem.
-Sistem ini telah kami
+Program ini dirancang untuk mengelola inventaris alat laboratorium, menyediakan fitur pendaftaran dan login bagi pengguna. Data yang disimpan mencakup informasi tentang alat laboratorium, termasuk ID alat, nama, model, dan jumlah yang tersedia. Struktur data utama terdiri dari dua bagian: User untuk informasi pengguna dan Alat untuk data alat.
 
 ***PENJELASAN PROGRAM BONUS***<br>
    Program ini merupakan program yang kami susun untuk membantu Pengguna memahami kosakata per lirik pada sebuah lagu, jadi saat lirik lagu di input nantinya output
