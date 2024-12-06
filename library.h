@@ -53,3 +53,10 @@ void pinjamAlat(const char *alatLabFile, const char *riwayatFile, struct User *n
 void lihatRiwayatPeminjaman(const char *riwayatFile, struct User *name);
 
 //Fungsi untuk mengembalikan alat
+void kembalikanAlat(const char *alatLabFile, const char *riwayatFile, struct User *name);
+
+//Menu utama untuk name
+void menuUser(const char *alatLabFile, const char *riwayatFile, struct User *name);
+
+//Fungsi untuk menambah alat baru
+void tambah_alat();
