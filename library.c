@@ -373,3 +373,53 @@ void hapus_alat() {
     // Baca baris pertama (header) dan langsung salin ke file sementara
     if (fgets(line, sizeof(line), file)) {
         fprintf(temp, "%s", line);  // Salin header apa adanya
+    }
+
+    // Baca setiap baris dari file utama untuk diproses
+    while (fgets(line, sizeof(line), file)) {
+        unsigned int alat_id, tahun, jumlah;
+        char nama[50], merek[50], model[50];
+
+        // Coba parsing baris sebagai data alat
+        if (sscanf(line, "%u,%49[^,],%49[^,],%49[^,],%u,%u",
+                   &alat_id, nama, merek, model, &tahun, &jumlah) == 6) {
+            // Jika ID cocok, jangan salin ke file sementara
+            if (alat_id == id) {
+                found = 1;
+                continue;
+            }
+
+            // Salin baris data alat ke file sementara
+            fprintf(temp, "%u,%s,%s,%s,%u,%u\n", alat_id, nama, merek, model, tahun, jumlah);
+        }
+    }
+
+    if (found) {
+        printf("Alat dengan ID %u berhasil dihapus.\n", id);
+    } else {
+        printf("Alat dengan ID %u tidak ditemukan.\n", id);
+    }
+
+    fclose(file);
+    fclose(temp);
+
+    // Mengganti file lama dengan file sementara
+    remove("alat_lab.txt");  // Hapus file lama
+    rename("temp.txt", "alat_lab.txt");  // Ganti file sementara menjadi file utama
+}
+
+//Fungsi untuk mengedit data alat berdasarkan ID
+void edit_alat() {
+    unsigned int id;
+    printf("Masukkan ID alat yang ingin di-edit: ");
+    scanf("%u", &id);
+
+    FILE *file = fopen("alat_lab.txt", "r");
+    FILE *temp = fopen("temp.txt", "w");
+    if (!file || !temp) {
+        printf("Gagal membuka file.\n");
+        return;
+    }
+
+    char line[200];
+    int found = 0;
