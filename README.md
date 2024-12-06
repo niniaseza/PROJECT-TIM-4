@@ -8,5 +8,5 @@ Anggota Kelompok 4:
 4. Illiza Khairamisa  2408107010017
 5. Putroe Fatimah Azzahra 2408107010002
 6. Andre Alfaridzi 2408107010011
-7. Mahda Anisa 2408107010036
+7. Mahda Annisa 2408107010036
    
