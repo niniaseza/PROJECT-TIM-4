@@ -92,6 +92,9 @@ int main(int argc, char *argv[])
     } else 
     {
         printf("Perintah tidak valid. Gunakan 'register' atau 'login'.\n");
+        printf("Cara Penggunaan:\n");
+        printf("  Registrasi: register <role> <Nama> <password>\n");
+        printf("  Login     : login <role> <Nama> <password>\n");
     }
     return 0;
 }
