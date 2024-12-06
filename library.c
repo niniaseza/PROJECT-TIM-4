@@ -248,3 +248,24 @@ void kembalikanAlat(const char *alatLabFile, const char *riwayatFile, struct Use
         }
     }
     fclose(fileRiwayat);
+    fclose(tempRiwayat);
+
+    rename("temp_riwayat.txt", riwayatFile);
+
+    // Update stok alat di file alatLabFile
+    FILE *fileAlat = fopen(alatLabFile, "r+");
+    if (!fileAlat) {
+        printf("Gagal membuka file alat lab.\n");
+        return;
+    }
+
+    FILE *tempAlat = fopen("temp_alat.txt", "w"); 
+    if (!tempAlat) {
+        printf("Gagal membuat file sementara.\n");
+        fclose(fileAlat);
+        return;
+    }
+
+    rewind(fileAlat);
+    fgets(buffer, sizeof(buffer), fileAlat); // Skip header
+    fprintf(tempAlat, "ID,Nama,Merek,Model,Tahun,Jumlah\n");
