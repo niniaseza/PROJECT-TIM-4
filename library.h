@@ -25,3 +25,11 @@ char merek[50];
 // struktur data untuk riwayat peminjaman
 struct RiwayatPeminjaman {
     char Nama[50];
+unsigned int idAlat;
+    char namaAlat[50];
+    unsigned int jumlah;
+    char tanggal[50];
+};
+
+//Fungsi untuk membersihkan layar
+void clearScreen();
